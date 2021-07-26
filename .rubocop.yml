@@ -1,14 +1,4 @@
-# The behavior of RuboCop can be controlled via the .rubocop.yml
-# configuration file. It makes it possible to enable/disable
-# certain cops (checks) and to alter their behavior if they accept
-# any parameters. The file can be placed either in your home
-# directory or in some project directory.
-#
-# RuboCop will start looking for the configuration file in the directory
-# where the inspected file is and continue its way up to the root directory.
-#
-# See https://docs.rubocop.org/rubocop/configuration
-
+ # .rubocop.yml
 inherit_mode:
   merge:
     - Exclude
@@ -23,5 +13,18 @@ require:
 inherit_gem:
   standard: config/base.yml
 
-Style/FrozenStringLiteralComment:
-  Enabled: false
+# AllCops:
+#   TargetRubyVersion: 3.0.1.1
+# Lint/Env:
+#   Enabled: true
+#   Include:
+#     - '**/*.rb'
+#   Exclude:
+#     - '**/config/environments/**/*'
+#     - '**/config/application.rb'
+#     - '**/config/environment.rb'
+#     - '**/config/puma.rb'
+#     - '**/config/boot.rb'
+#     - '**/spec/*_helper.rb'
+#     - '**/spec/**/support/**/*'
+#     - 'lib/generators/**/*'
