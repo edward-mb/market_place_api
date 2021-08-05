@@ -10,7 +10,7 @@ class Api::V1::ProductsController < ApplicationController
   end
 
   def show
-    options = { include: [:user] }
+    options = {include: [:user]}
     render json: ProductSerializer.new(@product, options).serializable_hash
   end
 
@@ -19,7 +19,7 @@ class Api::V1::ProductsController < ApplicationController
     if product.save
       render json: ProductSerializer.new(product).serializable_hash, status: :created
     else
-      render json: { errors: product.errors }, status: :unprocessable_entity
+      render json: {errors: product.errors}, status: :unprocessable_entity
     end
   end
 

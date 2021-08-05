@@ -18,8 +18,8 @@ class OrderTest < ActiveSupport::TestCase
 
   test "build 2 placements for the order" do
     @order.build_placements_with_product_ids_and_quantities [
-      { product_id: @product1.id, quantity: 2 },
-      { product_id: @product2.id, quantity: 3 },
+      {product_id: @product1.id, quantity: 2},
+      {product_id: @product2.id, quantity: 3}
     ]
 
     assert_difference("Placement.count", 2) do
@@ -30,7 +30,7 @@ class OrderTest < ActiveSupport::TestCase
   test "an order should not claim too much product than available" do
     @order.placements << Placement.new(
       product_id: @product1.id,
-      quantity: (1 + @product1.quantity),
+      quantity: (1 + @product1.quantity)
     )
 
     assert_not @order.valid?

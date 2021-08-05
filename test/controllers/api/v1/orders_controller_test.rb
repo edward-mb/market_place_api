@@ -6,10 +6,10 @@ class Api::V1::OrdersControllerTest < ActionDispatch::IntegrationTest
     @order_params = {
       order: {
         product_ids_and_quantities: [
-          { product_id: products(:one).id, quantity: 2 },
-          { product_id: products(:two).id, quantity: 3 },
-        ],
-      },
+          {product_id: products(:one).id, quantity: 2},
+          {product_id: products(:two).id, quantity: 3}
+        ]
+      }
     }
   end
 
@@ -20,7 +20,7 @@ class Api::V1::OrdersControllerTest < ActionDispatch::IntegrationTest
 
   test "should show orders" do
     get api_v1_orders_url,
-      headers: { Authorization: JsonWebToken.encode(user_id: @order.user_id) }, as: :json
+      headers: {Authorization: JsonWebToken.encode(user_id: @order.user_id)}, as: :json
     assert_response :success
 
     json_response = JSON.parse(response.body)
@@ -29,7 +29,7 @@ class Api::V1::OrdersControllerTest < ActionDispatch::IntegrationTest
 
   test "should show order" do
     get api_v1_order_url(@order),
-      headers: { Authorization: JsonWebToken.encode(user_id: @order.user_id) },
+      headers: {Authorization: JsonWebToken.encode(user_id: @order.user_id)},
       as: :json
     assert_response :success
 
@@ -60,7 +60,7 @@ class Api::V1::OrdersControllerTest < ActionDispatch::IntegrationTest
     assert_difference("Order.count", 1) do
       assert_difference("Placement.count", 2) do
         post api_v1_orders_url,
-          headers: { Authorization: JsonWebToken.encode(user_id: @order.user_id) },
+          headers: {Authorization: JsonWebToken.encode(user_id: @order.user_id)},
           params: @order_params,
           as: :json
       end
