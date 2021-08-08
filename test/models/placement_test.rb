@@ -6,7 +6,9 @@ class PlacementTest < ActiveSupport::TestCase
   end
 
   test "decreases the product quantity by placement quantity" do
+    # rubocop:disable Lint/UselessAssignment
     product = @placement.product
+    # rubocop:enable Lint/UselessAssignment
 
     assert_difference("product.quantity", -@placement.quantity) do
       @placement.decrement_product_quantity!
